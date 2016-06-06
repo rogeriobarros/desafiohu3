@@ -1,0 +1,36 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "idTravelOption",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titleTravelOption",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descriptionTravelOption",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "daily",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20160606141242",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "travel_options",
+    "pagination": "pagination"
+}

@@ -1,0 +1,39 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "idLocation",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "streetAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stateProvince",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160606140512",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "location",
+    "pagination": "no"
+}

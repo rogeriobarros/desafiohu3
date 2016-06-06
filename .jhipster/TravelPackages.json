@@ -1,0 +1,28 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "idTravelPackage",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titleTravelPackage",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descriptionTravelPackage",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160606140916",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "travel_packages",
+    "pagination": "no"
+}

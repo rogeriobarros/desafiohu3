@@ -1,0 +1,59 @@
+entity Photo {
+	idPhoto Long,
+	path String required
+}
+
+entity Region {
+	idRegion Long,
+	nameRegion String required
+}
+
+entity Country {
+	idCountry Long,
+	nameCountry String required
+}
+
+entity Location {
+	idLocation Long,
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity TravelPackages {
+	idTravelPackage Long,
+	titleTravelPackage String required,
+    descriptionTravelPackage String
+}
+
+entity TravelOptions {
+	idTravelOption Long,
+	titleTravelOption String required,
+    descriptionTravelOption String,
+    daily Integer,
+	price BigDecimal,
+}
+
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}
+
+relationship OneToOne {
+	TravelPackages{location} to Location
+}
+
+relationship OneToMany {
+	TravelPackages{options} to TravelOptions,
+    TravelPackages{photos} to Photo,
+    
+    TravelOptions{from} to Region
+}
+
+paginate TravelOptions, Photo with pagination
+dto all with mapstruct
+service all with serviceClass

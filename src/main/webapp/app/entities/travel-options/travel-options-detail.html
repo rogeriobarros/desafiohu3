@@ -1,0 +1,34 @@
+
+<div>
+    <h2><span>Travel Options</span> {{vm.travelOptions.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Id Travel Option</span></dt>
+        <dd>
+            <span>{{vm.travelOptions.idTravelOption}}</span>
+        </dd>
+        <dt><span>Title Travel Option</span></dt>
+        <dd>
+            <span>{{vm.travelOptions.titleTravelOption}}</span>
+        </dd>
+        <dt><span>Description Travel Option</span></dt>
+        <dd>
+            <span>{{vm.travelOptions.descriptionTravelOption}}</span>
+        </dd>
+        <dt><span>Daily</span></dt>
+        <dd>
+            <span>{{vm.travelOptions.daily}}</span>
+        </dd>
+        <dt><span>Price</span></dt>
+        <dd>
+            <span>{{vm.travelOptions.price}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,22 @@
+
+<div>
+    <h2><span>Photo</span> {{vm.photo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Id Photo</span></dt>
+        <dd>
+            <span>{{vm.photo.idPhoto}}</span>
+        </dd>
+        <dt><span>Path</span></dt>
+        <dd>
+            <span>{{vm.photo.path}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

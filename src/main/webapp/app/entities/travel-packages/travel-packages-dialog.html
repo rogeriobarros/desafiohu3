@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTravelPackagesLabel">Create or edit a Travel Packages</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.travelPackages.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.travelPackages.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_idTravelPackage">Id Travel Package</label>
+            <input type="number" class="form-control" name="idTravelPackage" id="field_idTravelPackage"
+                    ng-model="vm.travelPackages.idTravelPackage"
+                    required />
+            <div ng-show="editForm.idTravelPackage.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.idTravelPackage.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.idTravelPackage.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_titleTravelPackage">Title Travel Package</label>
+            <input type="text" class="form-control" name="titleTravelPackage" id="field_titleTravelPackage"
+                    ng-model="vm.travelPackages.titleTravelPackage"
+                    required />
+            <div ng-show="editForm.titleTravelPackage.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.titleTravelPackage.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_descriptionTravelPackage">Description Travel Package</label>
+            <input type="text" class="form-control" name="descriptionTravelPackage" id="field_descriptionTravelPackage"
+                    ng-model="vm.travelPackages.descriptionTravelPackage"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
