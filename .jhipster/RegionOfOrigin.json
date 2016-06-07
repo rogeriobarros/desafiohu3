@@ -1,0 +1,17 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nameRegion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160606135929",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "region_of_origin",
+    "pagination": "no"
+}

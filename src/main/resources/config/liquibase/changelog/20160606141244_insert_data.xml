@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20160606141244-1" author="jhipster">
+        <!--
+	    	Added the entity Location.
+	    -->
+        <loadData encoding="UTF-8"
+          file="config/liquibase/locations.csv"
+          separator=";"
+          tableName="location">
+        </loadData>
+	    <!--
+	        Added the entity TravelPackages.
+	    -->
+	    <loadData encoding="UTF-8"
+          file="config/liquibase/travel_packages.csv"
+          separator=";"
+          tableName="travel_packages">
+        </loadData>
+        <!--
+	        Added the entity Photos.
+	    -->
+	    <loadData encoding="UTF-8"
+          file="config/liquibase/photos.csv"
+          separator=";"
+          tableName="photo">
+        </loadData>
+        <!--
+	        Added the entity TravelOptions.
+	    -->
+	    <loadData encoding="UTF-8"
+          file="config/liquibase/travel_options.csv"
+          separator=";"
+          tableName="travel_options">
+        </loadData>
+        <!--
+	        Added the entity RegionOfOrigin.
+	    -->
+	    <loadData encoding="UTF-8"
+          file="config/liquibase/region_of_origin.csv"
+          separator=";"
+          tableName="region_of_origin">
+        </loadData>
+            
+          <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
+
+        
+    </changeSet>
+</databaseChangeLog>

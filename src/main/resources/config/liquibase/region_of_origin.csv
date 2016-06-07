@@ -1,0 +1,19 @@
+ID ;NAME_REGION;ID_TRAVEL_OPTIONS
+1;Manaus;1
+2;Belém;1
+3;Rio de Janeiro;2
+4;Brasilia;3
+5;Campo Grande;3
+6;Manaus;4
+7;Rio de Janeiro;5
+8;São Paulo;5
+9;Brasilia;6
+10;Manaus;7
+11;Salvador;7
+12;Ilhéus;7
+13;Boa Vista;7
+14;Cuiabá;7
+15;Rio de Janeiro;8
+16;Brasilia;9
+17;Salvador;9
+18;Campo Grande;9
