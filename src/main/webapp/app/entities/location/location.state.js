@@ -62,11 +62,8 @@
                     resolve: {
                         entity: function () {
                             return {
-                                idLocation: null,
-                                streetAddress: null,
-                                postalCode: null,
-                                city: null,
                                 stateProvince: null,
+                                country: null,
                                 id: null
                             };
                         }

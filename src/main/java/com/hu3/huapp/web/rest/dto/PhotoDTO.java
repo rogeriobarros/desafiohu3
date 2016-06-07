@@ -13,9 +13,6 @@ public class PhotoDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idPhoto;
-
-    @NotNull
     private String path;
 
 
@@ -25,13 +22,6 @@ public class PhotoDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-    public Long getIdPhoto() {
-        return idPhoto;
-    }
-
-    public void setIdPhoto(Long idPhoto) {
-        this.idPhoto = idPhoto;
     }
     public String getPath() {
         return path;
@@ -66,7 +56,6 @@ public class PhotoDTO implements Serializable {
     public String toString() {
         return "PhotoDTO{" +
             "id=" + id +
-            ", idPhoto='" + idPhoto + "'" +
             ", path='" + path + "'" +
             '}';
     }

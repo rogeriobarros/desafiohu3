@@ -1,11 +1,14 @@
 package com.hu3.huapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -20,11 +23,8 @@ public class TravelPackages implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_travel_package")
     private Long id;
-
-    @NotNull
-    @Column(name = "id_travel_package", nullable = false)
-    private Long idTravelPackage;
 
     @NotNull
     @Column(name = "title_travel_package", nullable = false)
@@ -33,20 +33,22 @@ public class TravelPackages implements Serializable {
     @Column(name = "description_travel_package")
     private String descriptionTravelPackage;
 
+    @OneToMany(mappedBy = "packages", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<TravelOptions> options = new HashSet<>();
+
+    @OneToMany(mappedBy = "packages", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Photo> photos = new HashSet<>();
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdTravelPackage() {
-        return idTravelPackage;
-    }
-
-    public void setIdTravelPackage(Long idTravelPackage) {
-        this.idTravelPackage = idTravelPackage;
     }
 
     public String getTitleTravelPackage() {
@@ -63,6 +65,22 @@ public class TravelPackages implements Serializable {
 
     public void setDescriptionTravelPackage(String descriptionTravelPackage) {
         this.descriptionTravelPackage = descriptionTravelPackage;
+    }
+
+    public Set<TravelOptions> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Set<TravelOptions> travelOptions) {
+        this.options = travelOptions;
+    }
+
+    public Set<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<Photo> photos) {
+        this.photos = photos;
     }
 
     @Override
@@ -89,7 +107,6 @@ public class TravelPackages implements Serializable {
     public String toString() {
         return "TravelPackages{" +
             "id=" + id +
-            ", idTravelPackage='" + idTravelPackage + "'" +
             ", titleTravelPackage='" + titleTravelPackage + "'" +
             ", descriptionTravelPackage='" + descriptionTravelPackage + "'" +
             '}';

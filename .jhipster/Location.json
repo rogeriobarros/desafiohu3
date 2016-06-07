@@ -2,29 +2,14 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "idLocation",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "streetAddress",
+            "fieldName": "stateProvince",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "postalCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "city",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "stateProvince",
+            "fieldName": "country",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

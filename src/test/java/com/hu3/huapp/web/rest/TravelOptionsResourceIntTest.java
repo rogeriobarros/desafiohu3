@@ -45,9 +45,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class TravelOptionsResourceIntTest {
 
-
-    private static final Long DEFAULT_ID_TRAVEL_OPTION = 1L;
-    private static final Long UPDATED_ID_TRAVEL_OPTION = 2L;
     private static final String DEFAULT_TITLE_TRAVEL_OPTION = "AAAAA";
     private static final String UPDATED_TITLE_TRAVEL_OPTION = "BBBBB";
     private static final String DEFAULT_DESCRIPTION_TRAVEL_OPTION = "AAAAA";
@@ -92,7 +89,6 @@ public class TravelOptionsResourceIntTest {
     @Before
     public void initTest() {
         travelOptions = new TravelOptions();
-        travelOptions.setIdTravelOption(DEFAULT_ID_TRAVEL_OPTION);
         travelOptions.setTitleTravelOption(DEFAULT_TITLE_TRAVEL_OPTION);
         travelOptions.setDescriptionTravelOption(DEFAULT_DESCRIPTION_TRAVEL_OPTION);
         travelOptions.setDaily(DEFAULT_DAILY);
@@ -116,30 +112,10 @@ public class TravelOptionsResourceIntTest {
         List<TravelOptions> travelOptions = travelOptionsRepository.findAll();
         assertThat(travelOptions).hasSize(databaseSizeBeforeCreate + 1);
         TravelOptions testTravelOptions = travelOptions.get(travelOptions.size() - 1);
-        assertThat(testTravelOptions.getIdTravelOption()).isEqualTo(DEFAULT_ID_TRAVEL_OPTION);
         assertThat(testTravelOptions.getTitleTravelOption()).isEqualTo(DEFAULT_TITLE_TRAVEL_OPTION);
         assertThat(testTravelOptions.getDescriptionTravelOption()).isEqualTo(DEFAULT_DESCRIPTION_TRAVEL_OPTION);
         assertThat(testTravelOptions.getDaily()).isEqualTo(DEFAULT_DAILY);
         assertThat(testTravelOptions.getPrice()).isEqualTo(DEFAULT_PRICE);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdTravelOptionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = travelOptionsRepository.findAll().size();
-        // set the field null
-        travelOptions.setIdTravelOption(null);
-
-        // Create the TravelOptions, which fails.
-        TravelOptionsDTO travelOptionsDTO = travelOptionsMapper.travelOptionsToTravelOptionsDTO(travelOptions);
-
-        restTravelOptionsMockMvc.perform(post("/api/travel-options")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(travelOptionsDTO)))
-                .andExpect(status().isBadRequest());
-
-        List<TravelOptions> travelOptions = travelOptionsRepository.findAll();
-        assertThat(travelOptions).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -172,7 +148,6 @@ public class TravelOptionsResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(travelOptions.getId().intValue())))
-                .andExpect(jsonPath("$.[*].idTravelOption").value(hasItem(DEFAULT_ID_TRAVEL_OPTION.intValue())))
                 .andExpect(jsonPath("$.[*].titleTravelOption").value(hasItem(DEFAULT_TITLE_TRAVEL_OPTION.toString())))
                 .andExpect(jsonPath("$.[*].descriptionTravelOption").value(hasItem(DEFAULT_DESCRIPTION_TRAVEL_OPTION.toString())))
                 .andExpect(jsonPath("$.[*].daily").value(hasItem(DEFAULT_DAILY)))
@@ -190,7 +165,6 @@ public class TravelOptionsResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(travelOptions.getId().intValue()))
-            .andExpect(jsonPath("$.idTravelOption").value(DEFAULT_ID_TRAVEL_OPTION.intValue()))
             .andExpect(jsonPath("$.titleTravelOption").value(DEFAULT_TITLE_TRAVEL_OPTION.toString()))
             .andExpect(jsonPath("$.descriptionTravelOption").value(DEFAULT_DESCRIPTION_TRAVEL_OPTION.toString()))
             .andExpect(jsonPath("$.daily").value(DEFAULT_DAILY))
@@ -215,7 +189,6 @@ public class TravelOptionsResourceIntTest {
         // Update the travelOptions
         TravelOptions updatedTravelOptions = new TravelOptions();
         updatedTravelOptions.setId(travelOptions.getId());
-        updatedTravelOptions.setIdTravelOption(UPDATED_ID_TRAVEL_OPTION);
         updatedTravelOptions.setTitleTravelOption(UPDATED_TITLE_TRAVEL_OPTION);
         updatedTravelOptions.setDescriptionTravelOption(UPDATED_DESCRIPTION_TRAVEL_OPTION);
         updatedTravelOptions.setDaily(UPDATED_DAILY);
@@ -231,7 +204,6 @@ public class TravelOptionsResourceIntTest {
         List<TravelOptions> travelOptions = travelOptionsRepository.findAll();
         assertThat(travelOptions).hasSize(databaseSizeBeforeUpdate);
         TravelOptions testTravelOptions = travelOptions.get(travelOptions.size() - 1);
-        assertThat(testTravelOptions.getIdTravelOption()).isEqualTo(UPDATED_ID_TRAVEL_OPTION);
         assertThat(testTravelOptions.getTitleTravelOption()).isEqualTo(UPDATED_TITLE_TRAVEL_OPTION);
         assertThat(testTravelOptions.getDescriptionTravelOption()).isEqualTo(UPDATED_DESCRIPTION_TRAVEL_OPTION);
         assertThat(testTravelOptions.getDaily()).isEqualTo(UPDATED_DAILY);

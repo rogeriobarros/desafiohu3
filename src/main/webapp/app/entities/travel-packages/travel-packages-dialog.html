@@ -14,22 +14,6 @@
                     ng-model="vm.travelPackages.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_idTravelPackage">Id Travel Package</label>
-            <input type="number" class="form-control" name="idTravelPackage" id="field_idTravelPackage"
-                    ng-model="vm.travelPackages.idTravelPackage"
-                    required />
-            <div ng-show="editForm.idTravelPackage.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.idTravelPackage.$error.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.idTravelPackage.$error.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_titleTravelPackage">Title Travel Package</label>
             <input type="text" class="form-control" name="titleTravelPackage" id="field_titleTravelPackage"
                     ng-model="vm.travelPackages.titleTravelPackage"

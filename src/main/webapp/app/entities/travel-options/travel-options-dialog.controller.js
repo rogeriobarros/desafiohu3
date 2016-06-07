@@ -5,14 +5,15 @@
         .module('desafiohu3App')
         .controller('TravelOptionsDialogController', TravelOptionsDialogController);
 
-    TravelOptionsDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'TravelOptions'];
+    TravelOptionsDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'TravelOptions', 'RegionOfOrigin'];
 
-    function TravelOptionsDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, TravelOptions) {
+    function TravelOptionsDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, TravelOptions, RegionOfOrigin) {
         var vm = this;
 
         vm.travelOptions = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.regionoforigins = RegionOfOrigin.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

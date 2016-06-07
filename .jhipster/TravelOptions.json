@@ -1,13 +1,13 @@
 {
-    "relationships": [],
-    "fields": [
+    "relationships": [
         {
-            "fieldName": "idTravelOption",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
+            "relationshipName": "from",
+            "otherEntityName": "regionOfOrigin",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "option"
+        }
+    ],
+    "fields": [
         {
             "fieldName": "titleTravelOption",
             "fieldType": "String",

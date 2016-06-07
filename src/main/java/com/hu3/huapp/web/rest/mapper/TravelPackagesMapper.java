@@ -16,6 +16,8 @@ public interface TravelPackagesMapper {
 
     List<TravelPackagesDTO> travelPackagesToTravelPackagesDTOs(List<TravelPackages> travelPackages);
 
+    @Mapping(target = "options", ignore = true)
+    @Mapping(target = "photos", ignore = true)
     TravelPackages travelPackagesDTOToTravelPackages(TravelPackagesDTO travelPackagesDTO);
 
     List<TravelPackages> travelPackagesDTOsToTravelPackages(List<TravelPackagesDTO> travelPackagesDTOs);

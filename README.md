@@ -1,37 +1,78 @@
-# Desafio Página Ofertas
+# desafiohu3
 
-Neste problema você deve implementar a página de ofertas.
-Este desenvolvimento engloba a diagramação da página, a galeria de fotos, os filtros e o desenvolvimento do back end.
-A interface em anexo precisa ser implementada assim como o backend para consumir uma oferta e suas opções.
-A oferta precisa do titulo, descrição e as imagens além das opções da oferta que possuem preço, quantidade de dias, cidade de origem da partida, título e descrição.
-Tudo será avaliado. Faça o seu melhor na linguagem onde vc possui o maior domínio.
+This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
-***Restrições***
-*Eu preciso conseguir rodar seu código no mac os x OU no ubuntu;
-*Eu vou executar seu código com os seguintes comandos:
+## Development
 
->1. *git clone seu-fork*
-2. *cd seu-fork*
-3. *comando para instalar dependências*
-4. *comando para executar a aplicação*
-5. *comando para executar os testes back end e front end*
+Before you can build this project, you must install and configure the following dependencies on your machine:
 
-Esses comandos tem que ser o suficiente para configurar meu mac os x OU ubuntu e rodar seu programa. Pode considerar que eu tenho instalado no meu sistema Python, Java, PHP, Ruby e/ou Node. Qualquer outra dependência que eu precisar vc tem que prover.
+1. [Node.js][]: We use Node to run a development web server and build the project.
+   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
 
-***Funcionalidades
-* Quando eu realizar o filtro das opções da oferta, a página não pode ser recarregada.
-* As opções do pacote sempre devem vir ordenadas pelo preço, do menor para o maior.
-* A oferta precisa do titulo, da descrição e de suas imagens além das opções da oferta que possuem preço, quantidade de dias, cidade de origem da partida, título e descrição. 
+After installing Node, you should be able to run the following command to install development tools (like
+[Bower][] and [BrowserSync][]). You will only need to run this command when dependencies change in package.json.
 
-***Performance***
-* Preciso que os seus serviços suportem um volume de 1000 requisições por segundo
+    npm install
 
-***Artefatos***
-* O arquivo oferta.txt possui as informações de pacotes e suas opções.
-* A pasta imagens possui as imagens da galeria de fotos
-* Não precisa seguir a estrutura do artefato, apenas os dados.
+We use [Gulp][] as our build system. Install the Gulp command-line tool globally with:
 
-***Observações***
-* O desafio somente será avaliado caso todas as restrições tenham sido respeitadas.
+    npm install -g gulp
 
-***Boa sorte ;)***
+Run the following commands in two separate terminals to create a blissful development experience where your browser
+auto-refreshes when files change on your hard drive.
+
+    ./gradlew
+    gulp
+
+Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
+Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
+
+
+## Building for production
+
+To optimize the desafiohu3 client for production, run:
+
+    ./gradlew -Pprod clean bootRepackage
+
+This will concatenate and minify CSS and JavaScript files. It will also modify `index.html` so it references
+these new files.
+
+To ensure everything worked, run:
+
+    java -jar build/libs/*.war --spring.profiles.active=prod
+
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+
+## Testing
+
+Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript/` and can be run with:
+
+    gulp test
+
+
+
+## Continuous Integration
+
+To setup this project in Jenkins, use the following configuration:
+
+* Project name: `desafiohu3`
+* Source Code Management
+    * Git Repository: `git@github.com:xxxx/desafiohu3.git`
+    * Branches to build: `*/master`
+    * Additional Behaviours: `Wipe out repository & force clone`
+* Build Triggers
+    * Poll SCM / Schedule: `H/5 * * * *`
+* Build
+    * Invoke Gradle script / Use Gradle Wrapper / Tasks: `-Pprod clean test bootRepackage`
+* Post-build Actions
+    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
+
+[JHipster]: https://jhipster.github.io/
+[Node.js]: https://nodejs.org/
+[Bower]: http://bower.io/
+[Gulp]: http://gulpjs.com/
+[BrowserSync]: http://www.browsersync.io/
+[Karma]: http://karma-runner.github.io/
+[Jasmine]: http://jasmine.github.io/2.0/introduction.html
+[Protractor]: https://angular.github.io/protractor/

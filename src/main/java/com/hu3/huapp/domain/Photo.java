@@ -23,12 +23,12 @@ public class Photo implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "id_photo", nullable = false)
-    private Long idPhoto;
-
-    @NotNull
     @Column(name = "path", nullable = false)
     private String path;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_travel_package")
+    private TravelPackages packages;
 
     public Long getId() {
         return id;
@@ -36,14 +36,6 @@ public class Photo implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdPhoto() {
-        return idPhoto;
-    }
-
-    public void setIdPhoto(Long idPhoto) {
-        this.idPhoto = idPhoto;
     }
 
     public String getPath() {
@@ -54,7 +46,15 @@ public class Photo implements Serializable {
         this.path = path;
     }
 
-    @Override
+    public TravelPackages getPackages() {
+		return packages;
+	}
+
+	public void setPackages(TravelPackages packages) {
+		this.packages = packages;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -78,7 +78,6 @@ public class Photo implements Serializable {
     public String toString() {
         return "Photo{" +
             "id=" + id +
-            ", idPhoto='" + idPhoto + "'" +
             ", path='" + path + "'" +
             '}';
     }

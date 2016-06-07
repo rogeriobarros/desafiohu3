@@ -3,6 +3,8 @@ package com.hu3.huapp.web.rest.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 
@@ -12,9 +14,6 @@ import java.util.Objects;
 public class TravelOptionsDTO implements Serializable {
 
     private Long id;
-
-    @NotNull
-    private Long idTravelOption;
 
     @NotNull
     private String titleTravelOption;
@@ -32,13 +31,6 @@ public class TravelOptionsDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-    public Long getIdTravelOption() {
-        return idTravelOption;
-    }
-
-    public void setIdTravelOption(Long idTravelOption) {
-        this.idTravelOption = idTravelOption;
     }
     public String getTitleTravelOption() {
         return titleTravelOption;
@@ -94,7 +86,6 @@ public class TravelOptionsDTO implements Serializable {
     public String toString() {
         return "TravelOptionsDTO{" +
             "id=" + id +
-            ", idTravelOption='" + idTravelOption + "'" +
             ", titleTravelOption='" + titleTravelOption + "'" +
             ", descriptionTravelOption='" + descriptionTravelOption + "'" +
             ", daily='" + daily + "'" +

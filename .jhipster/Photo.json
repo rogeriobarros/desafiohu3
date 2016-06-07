@@ -2,13 +2,6 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "idPhoto",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "path",
             "fieldType": "String",
             "fieldValidateRules": [

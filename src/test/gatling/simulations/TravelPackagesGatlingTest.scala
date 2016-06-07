@@ -67,7 +67,7 @@ class TravelPackagesGatlingTest extends Simulation {
             .exec(http("Create new travelPackages")
             .post("/api/travel-packages")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "idTravelPackage":null, "titleTravelPackage":"SAMPLE_TEXT", "descriptionTravelPackage":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "titleTravelPackage":"SAMPLE_TEXT", "descriptionTravelPackage":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_travelPackages_url"))).exitHereIfFailed
             .pause(10)

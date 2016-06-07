@@ -14,22 +14,6 @@
                     ng-model="vm.photo.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_idPhoto">Id Photo</label>
-            <input type="number" class="form-control" name="idPhoto" id="field_idPhoto"
-                    ng-model="vm.photo.idPhoto"
-                    required />
-            <div ng-show="editForm.idPhoto.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.idPhoto.$error.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.idPhoto.$error.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_path">Path</label>
             <input type="text" class="form-control" name="path" id="field_path"
                     ng-model="vm.photo.path"

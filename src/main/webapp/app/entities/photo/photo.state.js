@@ -62,7 +62,6 @@
                     resolve: {
                         entity: function () {
                             return {
-                                idPhoto: null,
                                 path: null,
                                 id: null
                             };

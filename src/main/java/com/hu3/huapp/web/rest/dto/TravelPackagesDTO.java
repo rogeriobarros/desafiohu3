@@ -2,6 +2,8 @@ package com.hu3.huapp.web.rest.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 
@@ -11,9 +13,6 @@ import java.util.Objects;
 public class TravelPackagesDTO implements Serializable {
 
     private Long id;
-
-    @NotNull
-    private Long idTravelPackage;
 
     @NotNull
     private String titleTravelPackage;
@@ -27,13 +26,6 @@ public class TravelPackagesDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-    public Long getIdTravelPackage() {
-        return idTravelPackage;
-    }
-
-    public void setIdTravelPackage(Long idTravelPackage) {
-        this.idTravelPackage = idTravelPackage;
     }
     public String getTitleTravelPackage() {
         return titleTravelPackage;
@@ -75,7 +67,6 @@ public class TravelPackagesDTO implements Serializable {
     public String toString() {
         return "TravelPackagesDTO{" +
             "id=" + id +
-            ", idTravelPackage='" + idTravelPackage + "'" +
             ", titleTravelPackage='" + titleTravelPackage + "'" +
             ", descriptionTravelPackage='" + descriptionTravelPackage + "'" +
             '}';

@@ -3,44 +3,29 @@ entity Photo {
 	path String required
 }
 
-entity Region {
-	idRegion Long,
-	nameRegion String required
-}
-
-entity Country {
-	idCountry Long,
-	nameCountry String required
+entity RegionOfOrigin {
+	id Long,
+	name String required
 }
 
 entity Location {
-	idLocation Long,
-	streetAddress String,
-	postalCode String,
-	city String,
-	stateProvince String
+	id Long,
+	stateProvince String required,
+    country String required
 }
 
 entity TravelPackages {
-	idTravelPackage Long,
-	titleTravelPackage String required,
-    descriptionTravelPackage String
+	id Long,
+	title String required,
+    description String
 }
 
 entity TravelOptions {
-	idTravelOption Long,
-	titleTravelOption String required,
-    descriptionTravelOption String,
+	id Long,
+	title String required,
+    description String,
     daily Integer,
 	price BigDecimal,
-}
-
-relationship OneToOne {
-	Country{region} to Region
-}
-
-relationship OneToOne {
-	Location{country} to Country
 }
 
 relationship OneToOne {
@@ -51,9 +36,9 @@ relationship OneToMany {
 	TravelPackages{options} to TravelOptions,
     TravelPackages{photos} to Photo,
     
-    TravelOptions{from} to Region
+    TravelOptions{from} to RegionOfOrigin
 }
 
 paginate TravelOptions, Photo with pagination
+
 dto all with mapstruct
-service all with serviceClass

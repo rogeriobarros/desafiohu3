@@ -6,11 +6,12 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160606135638_added_entity_Photo.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160606135929_added_entity_Region.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160606140107_added_entity_Country.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160606140512_added_entity_Location.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160606140916_added_entity_TravelPackages.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606135929_added_entity_RegionOfOrigin.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160606141242_added_entity_TravelOptions.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606140916_added_entity_TravelPackages.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141243_added_entity_fks.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141244_insert_data.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

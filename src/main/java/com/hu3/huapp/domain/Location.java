@@ -23,22 +23,12 @@ public class Location implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "id_location", nullable = false)
-    private Long idLocation;
-
-    @NotNull
-    @Column(name = "street_address", nullable = false)
-    private String streetAddress;
-
-    @Column(name = "postal_code")
-    private String postalCode;
-
-    @Column(name = "city")
-    private String city;
-
-    @NotNull
     @Column(name = "state_province", nullable = false)
     private String stateProvince;
+
+    @NotNull
+    @Column(name = "country", nullable = false)
+    private String country;
 
     public Long getId() {
         return id;
@@ -48,44 +38,20 @@ public class Location implements Serializable {
         this.id = id;
     }
 
-    public Long getIdLocation() {
-        return idLocation;
-    }
-
-    public void setIdLocation(Long idLocation) {
-        this.idLocation = idLocation;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getStateProvince() {
         return stateProvince;
     }
 
     public void setStateProvince(String stateProvince) {
         this.stateProvince = stateProvince;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -112,11 +78,8 @@ public class Location implements Serializable {
     public String toString() {
         return "Location{" +
             "id=" + id +
-            ", idLocation='" + idLocation + "'" +
-            ", streetAddress='" + streetAddress + "'" +
-            ", postalCode='" + postalCode + "'" +
-            ", city='" + city + "'" +
             ", stateProvince='" + stateProvince + "'" +
+            ", country='" + country + "'" +
             '}';
     }
 }

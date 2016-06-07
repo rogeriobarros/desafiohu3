@@ -1,13 +1,19 @@
 {
-    "relationships": [],
-    "fields": [
+    "relationships": [
         {
-            "fieldName": "idTravelPackage",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "relationshipName": "options",
+            "otherEntityName": "travelOptions",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "packages"
         },
+        {
+            "relationshipName": "photos",
+            "otherEntityName": "photo",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "packages"
+        }
+    ],
+    "fields": [
         {
             "fieldName": "titleTravelPackage",
             "fieldType": "String",

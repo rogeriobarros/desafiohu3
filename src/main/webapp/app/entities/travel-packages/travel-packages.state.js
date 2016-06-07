@@ -62,7 +62,6 @@
                     resolve: {
                         entity: function () {
                             return {
-                                idTravelPackage: null,
                                 titleTravelPackage: null,
                                 descriptionTravelPackage: null,
                                 id: null

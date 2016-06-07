@@ -1,5 +1,6 @@
 package com.hu3.huapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -21,11 +24,8 @@ public class TravelOptions implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_travel_options")
     private Long id;
-
-    @NotNull
-    @Column(name = "id_travel_option", nullable = false)
-    private Long idTravelOption;
 
     @NotNull
     @Column(name = "title_travel_option", nullable = false)
@@ -40,20 +40,21 @@ public class TravelOptions implements Serializable {
     @Column(name = "price", precision=10, scale=2)
     private BigDecimal price;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "option")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<RegionOfOrigin> froms = new HashSet<>();
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_travel_package")
+    private TravelPackages packages;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdTravelOption() {
-        return idTravelOption;
-    }
-
-    public void setIdTravelOption(Long idTravelOption) {
-        this.idTravelOption = idTravelOption;
     }
 
     public String getTitleTravelOption() {
@@ -88,7 +89,23 @@ public class TravelOptions implements Serializable {
         this.price = price;
     }
 
-    @Override
+    public Set<RegionOfOrigin> getFroms() {
+        return froms;
+    }
+
+    public void setFroms(Set<RegionOfOrigin> regionOfOrigins) {
+        this.froms = regionOfOrigins;
+    }
+
+    public TravelPackages getPackages() {
+		return packages;
+	}
+
+	public void setPackages(TravelPackages packages) {
+		this.packages = packages;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -112,7 +129,6 @@ public class TravelOptions implements Serializable {
     public String toString() {
         return "TravelOptions{" +
             "id=" + id +
-            ", idTravelOption='" + idTravelOption + "'" +
             ", titleTravelOption='" + titleTravelOption + "'" +
             ", descriptionTravelOption='" + descriptionTravelOption + "'" +
             ", daily='" + daily + "'" +

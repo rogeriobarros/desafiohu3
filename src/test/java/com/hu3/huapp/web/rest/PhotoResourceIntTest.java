@@ -44,9 +44,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class PhotoResourceIntTest {
 
-
-    private static final Long DEFAULT_ID_PHOTO = 1L;
-    private static final Long UPDATED_ID_PHOTO = 2L;
     private static final String DEFAULT_PATH = "AAAAA";
     private static final String UPDATED_PATH = "BBBBB";
 
@@ -83,7 +80,6 @@ public class PhotoResourceIntTest {
     @Before
     public void initTest() {
         photo = new Photo();
-        photo.setIdPhoto(DEFAULT_ID_PHOTO);
         photo.setPath(DEFAULT_PATH);
     }
 
@@ -104,27 +100,7 @@ public class PhotoResourceIntTest {
         List<Photo> photos = photoRepository.findAll();
         assertThat(photos).hasSize(databaseSizeBeforeCreate + 1);
         Photo testPhoto = photos.get(photos.size() - 1);
-        assertThat(testPhoto.getIdPhoto()).isEqualTo(DEFAULT_ID_PHOTO);
         assertThat(testPhoto.getPath()).isEqualTo(DEFAULT_PATH);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdPhotoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = photoRepository.findAll().size();
-        // set the field null
-        photo.setIdPhoto(null);
-
-        // Create the Photo, which fails.
-        PhotoDTO photoDTO = photoMapper.photoToPhotoDTO(photo);
-
-        restPhotoMockMvc.perform(post("/api/photos")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(photoDTO)))
-                .andExpect(status().isBadRequest());
-
-        List<Photo> photos = photoRepository.findAll();
-        assertThat(photos).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -157,7 +133,6 @@ public class PhotoResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(photo.getId().intValue())))
-                .andExpect(jsonPath("$.[*].idPhoto").value(hasItem(DEFAULT_ID_PHOTO.intValue())))
                 .andExpect(jsonPath("$.[*].path").value(hasItem(DEFAULT_PATH.toString())));
     }
 
@@ -172,7 +147,6 @@ public class PhotoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(photo.getId().intValue()))
-            .andExpect(jsonPath("$.idPhoto").value(DEFAULT_ID_PHOTO.intValue()))
             .andExpect(jsonPath("$.path").value(DEFAULT_PATH.toString()));
     }
 
@@ -194,7 +168,6 @@ public class PhotoResourceIntTest {
         // Update the photo
         Photo updatedPhoto = new Photo();
         updatedPhoto.setId(photo.getId());
-        updatedPhoto.setIdPhoto(UPDATED_ID_PHOTO);
         updatedPhoto.setPath(UPDATED_PATH);
         PhotoDTO photoDTO = photoMapper.photoToPhotoDTO(updatedPhoto);
 
@@ -207,7 +180,6 @@ public class PhotoResourceIntTest {
         List<Photo> photos = photoRepository.findAll();
         assertThat(photos).hasSize(databaseSizeBeforeUpdate);
         Photo testPhoto = photos.get(photos.size() - 1);
-        assertThat(testPhoto.getIdPhoto()).isEqualTo(UPDATED_ID_PHOTO);
         assertThat(testPhoto.getPath()).isEqualTo(UPDATED_PATH);
     }
 

@@ -16,6 +16,7 @@ public interface TravelOptionsMapper {
 
     List<TravelOptionsDTO> travelOptionsToTravelOptionsDTOs(List<TravelOptions> travelOptions);
 
+    @Mapping(target = "froms", ignore = true)
     TravelOptions travelOptionsDTOToTravelOptions(TravelOptionsDTO travelOptionsDTO);
 
     List<TravelOptions> travelOptionsDTOsToTravelOptions(List<TravelOptionsDTO> travelOptionsDTOs);

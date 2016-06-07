@@ -82,7 +82,6 @@
                     resolve: {
                         entity: function () {
                             return {
-                                idTravelOption: null,
                                 titleTravelOption: null,
                                 descriptionTravelOption: null,
                                 daily: null,

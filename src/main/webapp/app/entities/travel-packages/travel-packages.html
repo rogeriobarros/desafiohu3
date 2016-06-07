@@ -19,7 +19,6 @@
             <thead>
                 <tr>
                     <th><span>ID</span></th>
-                    <th><span>Id Travel Package</span></th>
                     <th><span>Title Travel Package</span></th>
                     <th><span>Description Travel Package</span></th>
                     <th></th>
@@ -28,7 +27,6 @@
             <tbody>
                 <tr ng-repeat="travelPackages in vm.travelPackages track by travelPackages.id">
                     <td><a ui-sref="travel-packages-detail({id:travelPackages.id})">{{travelPackages.id}}</a></td>
-                    <td>{{travelPackages.idTravelPackage}}</td>
                     <td>{{travelPackages.titleTravelPackage}}</td>
                     <td>{{travelPackages.descriptionTravelPackage}}</td>
                     <td class="text-right">

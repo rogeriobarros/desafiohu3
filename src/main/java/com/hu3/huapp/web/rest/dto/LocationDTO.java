@@ -13,17 +13,10 @@ public class LocationDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idLocation;
-
-    @NotNull
-    private String streetAddress;
-
-    private String postalCode;
-
-    private String city;
-
-    @NotNull
     private String stateProvince;
+
+    @NotNull
+    private String country;
 
 
     public Long getId() {
@@ -33,40 +26,19 @@ public class LocationDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getIdLocation() {
-        return idLocation;
-    }
-
-    public void setIdLocation(Long idLocation) {
-        this.idLocation = idLocation;
-    }
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
     public String getStateProvince() {
         return stateProvince;
     }
 
     public void setStateProvince(String stateProvince) {
         this.stateProvince = stateProvince;
+    }
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -94,11 +66,8 @@ public class LocationDTO implements Serializable {
     public String toString() {
         return "LocationDTO{" +
             "id=" + id +
-            ", idLocation='" + idLocation + "'" +
-            ", streetAddress='" + streetAddress + "'" +
-            ", postalCode='" + postalCode + "'" +
-            ", city='" + city + "'" +
             ", stateProvince='" + stateProvince + "'" +
+            ", country='" + country + "'" +
             '}';
     }
 }

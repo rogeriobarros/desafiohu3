@@ -5,9 +5,9 @@
         .module('desafiohu3App')
         .controller('TravelOptionsDetailController', TravelOptionsDetailController);
 
-    TravelOptionsDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'TravelOptions'];
+    TravelOptionsDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'TravelOptions', 'RegionOfOrigin'];
 
-    function TravelOptionsDetailController($scope, $rootScope, $stateParams, entity, TravelOptions) {
+    function TravelOptionsDetailController($scope, $rootScope, $stateParams, entity, TravelOptions, RegionOfOrigin) {
         var vm = this;
 
         vm.travelOptions = entity;

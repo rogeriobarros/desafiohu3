@@ -44,17 +44,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class LocationResourceIntTest {
 
-
-    private static final Long DEFAULT_ID_LOCATION = 1L;
-    private static final Long UPDATED_ID_LOCATION = 2L;
-    private static final String DEFAULT_STREET_ADDRESS = "AAAAA";
-    private static final String UPDATED_STREET_ADDRESS = "BBBBB";
-    private static final String DEFAULT_POSTAL_CODE = "AAAAA";
-    private static final String UPDATED_POSTAL_CODE = "BBBBB";
-    private static final String DEFAULT_CITY = "AAAAA";
-    private static final String UPDATED_CITY = "BBBBB";
     private static final String DEFAULT_STATE_PROVINCE = "AAAAA";
     private static final String UPDATED_STATE_PROVINCE = "BBBBB";
+    private static final String DEFAULT_COUNTRY = "AAAAA";
+    private static final String UPDATED_COUNTRY = "BBBBB";
 
     @Inject
     private LocationRepository locationRepository;
@@ -89,11 +82,8 @@ public class LocationResourceIntTest {
     @Before
     public void initTest() {
         location = new Location();
-        location.setIdLocation(DEFAULT_ID_LOCATION);
-        location.setStreetAddress(DEFAULT_STREET_ADDRESS);
-        location.setPostalCode(DEFAULT_POSTAL_CODE);
-        location.setCity(DEFAULT_CITY);
         location.setStateProvince(DEFAULT_STATE_PROVINCE);
+        location.setCountry(DEFAULT_COUNTRY);
     }
 
     @Test
@@ -113,49 +103,8 @@ public class LocationResourceIntTest {
         List<Location> locations = locationRepository.findAll();
         assertThat(locations).hasSize(databaseSizeBeforeCreate + 1);
         Location testLocation = locations.get(locations.size() - 1);
-        assertThat(testLocation.getIdLocation()).isEqualTo(DEFAULT_ID_LOCATION);
-        assertThat(testLocation.getStreetAddress()).isEqualTo(DEFAULT_STREET_ADDRESS);
-        assertThat(testLocation.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
-        assertThat(testLocation.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(DEFAULT_STATE_PROVINCE);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdLocationIsRequired() throws Exception {
-        int databaseSizeBeforeTest = locationRepository.findAll().size();
-        // set the field null
-        location.setIdLocation(null);
-
-        // Create the Location, which fails.
-        LocationDTO locationDTO = locationMapper.locationToLocationDTO(location);
-
-        restLocationMockMvc.perform(post("/api/locations")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(locationDTO)))
-                .andExpect(status().isBadRequest());
-
-        List<Location> locations = locationRepository.findAll();
-        assertThat(locations).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkStreetAddressIsRequired() throws Exception {
-        int databaseSizeBeforeTest = locationRepository.findAll().size();
-        // set the field null
-        location.setStreetAddress(null);
-
-        // Create the Location, which fails.
-        LocationDTO locationDTO = locationMapper.locationToLocationDTO(location);
-
-        restLocationMockMvc.perform(post("/api/locations")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(locationDTO)))
-                .andExpect(status().isBadRequest());
-
-        List<Location> locations = locationRepository.findAll();
-        assertThat(locations).hasSize(databaseSizeBeforeTest);
+        assertThat(testLocation.getCountry()).isEqualTo(DEFAULT_COUNTRY);
     }
 
     @Test
@@ -164,6 +113,25 @@ public class LocationResourceIntTest {
         int databaseSizeBeforeTest = locationRepository.findAll().size();
         // set the field null
         location.setStateProvince(null);
+
+        // Create the Location, which fails.
+        LocationDTO locationDTO = locationMapper.locationToLocationDTO(location);
+
+        restLocationMockMvc.perform(post("/api/locations")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(locationDTO)))
+                .andExpect(status().isBadRequest());
+
+        List<Location> locations = locationRepository.findAll();
+        assertThat(locations).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCountryIsRequired() throws Exception {
+        int databaseSizeBeforeTest = locationRepository.findAll().size();
+        // set the field null
+        location.setCountry(null);
 
         // Create the Location, which fails.
         LocationDTO locationDTO = locationMapper.locationToLocationDTO(location);
@@ -188,11 +156,8 @@ public class LocationResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(location.getId().intValue())))
-                .andExpect(jsonPath("$.[*].idLocation").value(hasItem(DEFAULT_ID_LOCATION.intValue())))
-                .andExpect(jsonPath("$.[*].streetAddress").value(hasItem(DEFAULT_STREET_ADDRESS.toString())))
-                .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
-                .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
-                .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE.toString())));
+                .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE.toString())))
+                .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())));
     }
 
     @Test
@@ -206,11 +171,8 @@ public class LocationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(location.getId().intValue()))
-            .andExpect(jsonPath("$.idLocation").value(DEFAULT_ID_LOCATION.intValue()))
-            .andExpect(jsonPath("$.streetAddress").value(DEFAULT_STREET_ADDRESS.toString()))
-            .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE.toString()))
-            .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
-            .andExpect(jsonPath("$.stateProvince").value(DEFAULT_STATE_PROVINCE.toString()));
+            .andExpect(jsonPath("$.stateProvince").value(DEFAULT_STATE_PROVINCE.toString()))
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()));
     }
 
     @Test
@@ -231,11 +193,8 @@ public class LocationResourceIntTest {
         // Update the location
         Location updatedLocation = new Location();
         updatedLocation.setId(location.getId());
-        updatedLocation.setIdLocation(UPDATED_ID_LOCATION);
-        updatedLocation.setStreetAddress(UPDATED_STREET_ADDRESS);
-        updatedLocation.setPostalCode(UPDATED_POSTAL_CODE);
-        updatedLocation.setCity(UPDATED_CITY);
         updatedLocation.setStateProvince(UPDATED_STATE_PROVINCE);
+        updatedLocation.setCountry(UPDATED_COUNTRY);
         LocationDTO locationDTO = locationMapper.locationToLocationDTO(updatedLocation);
 
         restLocationMockMvc.perform(put("/api/locations")
@@ -247,11 +206,8 @@ public class LocationResourceIntTest {
         List<Location> locations = locationRepository.findAll();
         assertThat(locations).hasSize(databaseSizeBeforeUpdate);
         Location testLocation = locations.get(locations.size() - 1);
-        assertThat(testLocation.getIdLocation()).isEqualTo(UPDATED_ID_LOCATION);
-        assertThat(testLocation.getStreetAddress()).isEqualTo(UPDATED_STREET_ADDRESS);
-        assertThat(testLocation.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
-        assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(UPDATED_STATE_PROVINCE);
+        assertThat(testLocation.getCountry()).isEqualTo(UPDATED_COUNTRY);
     }
 
     @Test

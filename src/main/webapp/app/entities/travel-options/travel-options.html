@@ -19,7 +19,6 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="idTravelOption"><span>Id Travel Option</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="titleTravelOption"><span>Title Travel Option</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descriptionTravelOption"><span>Description Travel Option</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="daily"><span>Daily</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -30,7 +29,6 @@
             <tbody>
                 <tr ng-repeat="travelOptions in vm.travelOptions track by travelOptions.id">
                     <td><a ui-sref="travel-options-detail({id:travelOptions.id})">{{travelOptions.id}}</a></td>
-                    <td>{{travelOptions.idTravelOption}}</td>
                     <td>{{travelOptions.titleTravelOption}}</td>
                     <td>{{travelOptions.descriptionTravelOption}}</td>
                     <td>{{travelOptions.daily}}</td>

@@ -44,9 +44,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class TravelPackagesResourceIntTest {
 
-
-    private static final Long DEFAULT_ID_TRAVEL_PACKAGE = 1L;
-    private static final Long UPDATED_ID_TRAVEL_PACKAGE = 2L;
     private static final String DEFAULT_TITLE_TRAVEL_PACKAGE = "AAAAA";
     private static final String UPDATED_TITLE_TRAVEL_PACKAGE = "BBBBB";
     private static final String DEFAULT_DESCRIPTION_TRAVEL_PACKAGE = "AAAAA";
@@ -85,7 +82,6 @@ public class TravelPackagesResourceIntTest {
     @Before
     public void initTest() {
         travelPackages = new TravelPackages();
-        travelPackages.setIdTravelPackage(DEFAULT_ID_TRAVEL_PACKAGE);
         travelPackages.setTitleTravelPackage(DEFAULT_TITLE_TRAVEL_PACKAGE);
         travelPackages.setDescriptionTravelPackage(DEFAULT_DESCRIPTION_TRAVEL_PACKAGE);
     }
@@ -107,28 +103,8 @@ public class TravelPackagesResourceIntTest {
         List<TravelPackages> travelPackages = travelPackagesRepository.findAll();
         assertThat(travelPackages).hasSize(databaseSizeBeforeCreate + 1);
         TravelPackages testTravelPackages = travelPackages.get(travelPackages.size() - 1);
-        assertThat(testTravelPackages.getIdTravelPackage()).isEqualTo(DEFAULT_ID_TRAVEL_PACKAGE);
         assertThat(testTravelPackages.getTitleTravelPackage()).isEqualTo(DEFAULT_TITLE_TRAVEL_PACKAGE);
         assertThat(testTravelPackages.getDescriptionTravelPackage()).isEqualTo(DEFAULT_DESCRIPTION_TRAVEL_PACKAGE);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdTravelPackageIsRequired() throws Exception {
-        int databaseSizeBeforeTest = travelPackagesRepository.findAll().size();
-        // set the field null
-        travelPackages.setIdTravelPackage(null);
-
-        // Create the TravelPackages, which fails.
-        TravelPackagesDTO travelPackagesDTO = travelPackagesMapper.travelPackagesToTravelPackagesDTO(travelPackages);
-
-        restTravelPackagesMockMvc.perform(post("/api/travel-packages")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(travelPackagesDTO)))
-                .andExpect(status().isBadRequest());
-
-        List<TravelPackages> travelPackages = travelPackagesRepository.findAll();
-        assertThat(travelPackages).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -161,7 +137,6 @@ public class TravelPackagesResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(travelPackages.getId().intValue())))
-                .andExpect(jsonPath("$.[*].idTravelPackage").value(hasItem(DEFAULT_ID_TRAVEL_PACKAGE.intValue())))
                 .andExpect(jsonPath("$.[*].titleTravelPackage").value(hasItem(DEFAULT_TITLE_TRAVEL_PACKAGE.toString())))
                 .andExpect(jsonPath("$.[*].descriptionTravelPackage").value(hasItem(DEFAULT_DESCRIPTION_TRAVEL_PACKAGE.toString())));
     }
@@ -177,7 +152,6 @@ public class TravelPackagesResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(travelPackages.getId().intValue()))
-            .andExpect(jsonPath("$.idTravelPackage").value(DEFAULT_ID_TRAVEL_PACKAGE.intValue()))
             .andExpect(jsonPath("$.titleTravelPackage").value(DEFAULT_TITLE_TRAVEL_PACKAGE.toString()))
             .andExpect(jsonPath("$.descriptionTravelPackage").value(DEFAULT_DESCRIPTION_TRAVEL_PACKAGE.toString()));
     }
@@ -200,7 +174,6 @@ public class TravelPackagesResourceIntTest {
         // Update the travelPackages
         TravelPackages updatedTravelPackages = new TravelPackages();
         updatedTravelPackages.setId(travelPackages.getId());
-        updatedTravelPackages.setIdTravelPackage(UPDATED_ID_TRAVEL_PACKAGE);
         updatedTravelPackages.setTitleTravelPackage(UPDATED_TITLE_TRAVEL_PACKAGE);
         updatedTravelPackages.setDescriptionTravelPackage(UPDATED_DESCRIPTION_TRAVEL_PACKAGE);
         TravelPackagesDTO travelPackagesDTO = travelPackagesMapper.travelPackagesToTravelPackagesDTO(updatedTravelPackages);
@@ -214,7 +187,6 @@ public class TravelPackagesResourceIntTest {
         List<TravelPackages> travelPackages = travelPackagesRepository.findAll();
         assertThat(travelPackages).hasSize(databaseSizeBeforeUpdate);
         TravelPackages testTravelPackages = travelPackages.get(travelPackages.size() - 1);
-        assertThat(testTravelPackages.getIdTravelPackage()).isEqualTo(UPDATED_ID_TRAVEL_PACKAGE);
         assertThat(testTravelPackages.getTitleTravelPackage()).isEqualTo(UPDATED_TITLE_TRAVEL_PACKAGE);
         assertThat(testTravelPackages.getDescriptionTravelPackage()).isEqualTo(UPDATED_DESCRIPTION_TRAVEL_PACKAGE);
     }

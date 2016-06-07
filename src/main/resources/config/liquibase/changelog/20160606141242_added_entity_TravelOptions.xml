@@ -18,13 +18,9 @@
     -->
     <changeSet id="20160606141242-1" author="jhipster">
         <createTable tableName="travel_options">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column name="id_travel_options" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="id_travel_option" type="bigint">
-                <constraints nullable="false" />
-            </column>
-            
             <column name="title_travel_option" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -38,6 +34,10 @@
             </column>
             
             <column name="price" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="id_travel_package" type="bigint">
                 <constraints nullable="true" />
             </column>
             
