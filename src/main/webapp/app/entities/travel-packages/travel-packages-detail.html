@@ -1,20 +1,73 @@
 
 <div>
-    <h2><span>Travel Packages</span> {{vm.travelPackages.id}}</h2>
+    <h2>{{vm.travelPackages.titleTravelPackage}}</h2>
+    <h4>{{vm.travelPackages.locationValues}}</h4>
+    <h6>{{vm.travelPackages.descriptionTravelPackage}}</h6>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Title Travel Package</span></dt>
-        <dd>
-            <span>{{vm.travelPackages.titleTravelPackage}}</span>
-        </dd>
-        <dt><span>Description Travel Package</span></dt>
-        <dd>
-            <span>{{vm.travelPackages.descriptionTravelPackage}}</span>
-        </dd>
-    </dl>
+    <!-- Carrossel de imagens -->
+	<div ng-include="'app/entities/travel-packages/img-carrosel.html'"></div>
+	
+	<div class="table-responsive">
+		<table class="jh-table table table-striped">
+	      <thead>
+	          <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+	              <th><span>ESCOLHA SUA MELHOR OPÇÃO</span> </th>
+	              <th> 
+	              	<label for="field_location">Saídas</label>
+		            <select ng-model="filter.region">
+		            	<option value="">--Selecione--</option>
+				        <option ng-repeat="region in (regionsFrom | unique)" ng-value="region">{{region}}</option>
+				     </select>
+	              </th>
+	              <th>
+	               
+	              	<label for="field_location">Diárias</label>
+		            <select ng-model="filter.daily" ng-init="'Selecione'">
+		            	<option value="">--Selecione--</option>
+				        <option ng-repeat="option in (optionsDaily | unique)" ng-value="option">{{option}}</option>
+				     </select>
+				  
+	              </th>
+	              <th></th>
+	          </tr>
+	      </thead>
+	      <tbody>
+			<tr ng-repeat="travelOptions in (vm.travelPackages.options | filter: {froms: {nameRegion: filter.region}, daily: filter.daily})">
+              <!--  <td><a ui-sref="travel-options-detail({id:travelOptions.id})">{{travelOptions.id}}</a></td> | filterBy: ['daily'] : optionFilter -->
+              <!--  travelOptions in (vm.travelPackages.options | filterBy: ['froms.nameRegion', 'daily'] : optionFilter)  -->
+              <!--  track by option.daily |filter: optionFilter -->
+              <td>
+              	<span><h4>{{travelOptions.titleTravelOption}}</h4></span>
+              	<span>{{travelOptions.descriptionTravelOption}}</span>
+              </td>
+              <td>
+              	<span>saidas: </span>
+              	<ul>
+              		<li ng-repeat="regions in travelOptions.froms track by regions.id">{{regions.nameRegion}}</li>
+              	</ul>
+              </td>
+              <td>
+              	<span>{{travelOptions.daily}} diarias</span>
+              	<span>1 pessoa</span>
+              </td>
+              <td>R$ {{travelOptions.price}}</td>
+              <td class="text-right">
+                  <div class="btn-group flex-btn-group-container">
+                      <button type="submit"
+                              ui-sref="travel-options-detail({id:travelOptions.id})"
+                              class="btn btn-info btn-sm">
+                          <span class="glyphicon glyphicon-eye-open"></span>
+                          <span class="hidden-xs hidden-sm"></span>
+                      </button>
+                  </div>
+              </td>
+	       </tr>
+	      </tbody>
+        </table>
+    </div>
 
-    <button type="submit"
+	<button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>

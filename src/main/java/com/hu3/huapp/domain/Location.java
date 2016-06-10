@@ -53,6 +53,10 @@ public class Location implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    public String getValues() {
+        return stateProvince+" - "+country;
+    }
 
     @Override
     public boolean equals(Object o) {

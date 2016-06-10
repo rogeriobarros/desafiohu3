@@ -28,7 +28,9 @@
             <column name="description_travel_package" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+            <column name="location_id" type="bigint">
+                <constraints unique="false" nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

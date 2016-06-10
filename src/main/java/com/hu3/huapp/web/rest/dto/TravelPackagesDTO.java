@@ -1,10 +1,14 @@
 package com.hu3.huapp.web.rest.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.validation.constraints.NotNull;
+
+import com.hu3.huapp.domain.Photo;
+import com.hu3.huapp.domain.TravelOptions;
 
 
 /**
@@ -12,14 +16,26 @@ import java.util.Objects;
  */
 public class TravelPackagesDTO implements Serializable {
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     @NotNull
     private String titleTravelPackage;
 
     private String descriptionTravelPackage;
 
-
+    private Long locationId;
+    
+    private String locationValues;
+    
+    private Set<Photo> photos;
+    
+    private Set<TravelOptions> options;
+    
     public Long getId() {
         return id;
     }
@@ -42,7 +58,47 @@ public class TravelPackagesDTO implements Serializable {
         this.descriptionTravelPackage = descriptionTravelPackage;
     }
 
-    @Override
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public String getLocationValues() {
+		return locationValues;
+	}
+
+	public void setLocationValues(String locationValues) {
+		this.locationValues = locationValues;
+	}
+
+	public Set<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Set<Photo> photos) {
+		this.photos = photos;
+	}
+
+	public Set<TravelOptions> getOptions() {
+    	Set<TravelOptions> travelOptions = new TreeSet<TravelOptions>(new java.util.Comparator<TravelOptions>(){ 
+    	    public int compare(TravelOptions a, TravelOptions b){
+    	        return a.getPrice().compareTo(b.getPrice());
+    	    } 
+    	});
+    	
+    	travelOptions.addAll(options);
+    	
+        return travelOptions;
+	}
+
+	public void setOptions(Set<TravelOptions> options) {
+		this.options = options;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

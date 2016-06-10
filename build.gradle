@@ -1,3 +1,4 @@
+// Gradle original
 buildscript {
     repositories {
         mavenLocal()
@@ -27,6 +28,7 @@ apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
 apply plugin: 'propdeps'
+apply plugin: "com.moowork.gulp"
 defaultTasks 'bootRun'
 
 bootRepackage {

@@ -5,10 +5,12 @@
         .module('desafiohu3App')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'TravelPackages'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, TravelPackages) {
         var vm = this;
+        
+        vm.travelPackages = [];
 
         vm.account = null;
         vm.isAuthenticated = null;
@@ -28,6 +30,14 @@
         }
         function register () {
             $state.go('register');
+        }
+        
+        loadAll();
+
+        function loadAll() {
+            TravelPackages.query(function(result) {
+                vm.travelPackages = result;
+            });
         }
     }
 })();

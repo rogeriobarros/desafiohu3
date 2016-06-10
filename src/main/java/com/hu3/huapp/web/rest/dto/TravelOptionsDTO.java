@@ -1,6 +1,9 @@
 package com.hu3.huapp.web.rest.dto;
 
 import javax.validation.constraints.*;
+
+import com.hu3.huapp.domain.RegionOfOrigin;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -23,7 +26,8 @@ public class TravelOptionsDTO implements Serializable {
     private Integer daily;
 
     private BigDecimal price;
-
+    
+    private Set<RegionOfOrigin> froms;
 
     public Long getId() {
         return id;
@@ -61,7 +65,15 @@ public class TravelOptionsDTO implements Serializable {
         this.price = price;
     }
 
-    @Override
+    public Set<RegionOfOrigin> getFroms() {
+		return froms;
+	}
+
+	public void setFroms(Set<RegionOfOrigin> froms) {
+		this.froms = froms;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

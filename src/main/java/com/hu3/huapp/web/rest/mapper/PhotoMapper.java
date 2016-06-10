@@ -16,6 +16,7 @@ public interface PhotoMapper {
 
     List<PhotoDTO> photosToPhotoDTOs(List<Photo> photos);
 
+    @Mapping(target = "packages", ignore = true)
     Photo photoDTOToPhoto(PhotoDTO photoDTO);
 
     List<Photo> photoDTOsToPhotos(List<PhotoDTO> photoDTOs);

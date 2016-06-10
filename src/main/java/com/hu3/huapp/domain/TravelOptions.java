@@ -40,12 +40,12 @@ public class TravelOptions implements Serializable {
     @Column(name = "price", precision=10, scale=2)
     private BigDecimal price;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "option")
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "option")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<RegionOfOrigin> froms = new HashSet<>();
     
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "id_travel_package")
     private TravelPackages packages;
 

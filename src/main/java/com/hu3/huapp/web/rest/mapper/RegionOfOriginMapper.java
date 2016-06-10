@@ -15,7 +15,8 @@ public interface RegionOfOriginMapper {
     RegionOfOriginDTO regionOfOriginToRegionOfOriginDTO(RegionOfOrigin regionOfOrigin);
 
     List<RegionOfOriginDTO> regionOfOriginsToRegionOfOriginDTOs(List<RegionOfOrigin> regionOfOrigins);
-
+    
+    @Mapping(target = "option", ignore = true)
     RegionOfOrigin regionOfOriginDTOToRegionOfOrigin(RegionOfOriginDTO regionOfOriginDTO);
 
     List<RegionOfOrigin> regionOfOriginDTOsToRegionOfOrigins(List<RegionOfOriginDTO> regionOfOriginDTOs);

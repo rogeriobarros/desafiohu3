@@ -4,8 +4,8 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
-            <p class="lead">This is your homepage</p>
+            <h1>Bem vindo as ofertas Hotel Urbano!</h1>
+            <p class="lead">Estas são as ofertas de hoje.</p>
 
             <div ng-switch="vm.isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true">
@@ -21,21 +21,39 @@
                 </div>
             </div>
 
-            <p>
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >follow @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
+		    <div class="table-responsive">
+		        <table class="jh-table table table-striped">
+		            <thead>
+		                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+		                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+		                    <th jh-sort-by="titleTravelPackage"><span>Oferta de Viagem</span> <span class="glyphicon glyphicon-sort"></span></th>
+		                    <th jh-sort-by="descriptionTravelPackage"><span>Descrição</span> <span class="glyphicon glyphicon-sort"></span></th>
+		                    <th></th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="travelPackages in vm.travelPackages track by travelPackages.id">
+		                    <td><a ui-sref="travel-packages-detail({id:travelPackages.id})">{{travelPackages.id}}</a></td>
+		                    <td>{{travelPackages.titleTravelPackage}}</td>
+		                    <td>{{travelPackages.descriptionTravelPackage}}</td>
+		                    <td class="text-right">
+		                        <div class="btn-group flex-btn-group-container">
+		                            <button type="submit"
+		                                    ui-sref="travel-options-detail({id:travelPackages.id})"
+		                                    class="btn btn-info btn-sm">
+		                                <span class="glyphicon glyphicon-eye-open"></span>
+		                                <span class="hidden-xs hidden-sm"></span>
+		                            </button>
+		                        </div>
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+		    </div>
+		    <div class="text-center">
+		        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+		        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+		    </div>
         </div>
     </div>
 </div>

@@ -28,10 +28,15 @@
         <div class="form-group">
             <label class="control-label" for="field_descriptionTravelPackage">Description Travel Package</label>
             <input type="text" class="form-control" name="descriptionTravelPackage" id="field_descriptionTravelPackage"
-                    ng-model="vm.travelPackages.descriptionTravelPackage"
-                     />
+                    ng-model="vm.travelPackages.descriptionTravelPackage" />
         </div>
 
+        <div class="form-group">
+            <label for="field_location">Location</label>
+            <select class="form-control" id="field_location" name="location" ng-model="vm.travelPackages.locationId" ng-options="location.id as location.id for location in vm.locations | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
