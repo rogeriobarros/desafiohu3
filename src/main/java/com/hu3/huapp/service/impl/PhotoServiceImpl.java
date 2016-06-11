@@ -57,6 +57,20 @@ public class PhotoServiceImpl implements PhotoService{
             .collect(Collectors.toCollection(LinkedList::new));
         return result;
     }
+    
+    /**
+     *  Get all the photos.
+     *  
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public List<PhotoDTO> findAllTravelPackageId(Long travelPackageId) {
+        log.debug("Request to get all Photos");
+        List<PhotoDTO> result = photoRepository.findAllTravelPackageId(travelPackageId).stream()
+            .map(photoMapper::photoToPhotoDTO)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return result;
+    }
 
     /**
      *  Get one photo by id.

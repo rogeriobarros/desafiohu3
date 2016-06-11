@@ -1,24 +1,20 @@
 
 <div>
-    <h2><span>Travel Options</span> {{vm.travelOptions.id}}</h2>
+    <h2><span>Parabéns!!!</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Title Travel Option</span></dt>
+        <dt><span>Você vai para</span></dt>
         <dd>
             <span>{{vm.travelOptions.titleTravelOption}}</span>
         </dd>
-        <dt><span>Description Travel Option</span></dt>
+        <dt><span>Por</span></dt>
         <dd>
-            <span>{{vm.travelOptions.descriptionTravelOption}}</span>
+            <span>{{vm.travelOptions.daily}} dias</span>
         </dd>
-        <dt><span>Daily</span></dt>
+        <dt><span>Pagando</span></dt>
         <dd>
-            <span>{{vm.travelOptions.daily}}</span>
-        </dd>
-        <dt><span>Price</span></dt>
-        <dd>
-            <span>{{vm.travelOptions.price}}</span>
+            <span>{{vm.travelOptions.price | currency}}</span>
         </dd>
     </dl>
 

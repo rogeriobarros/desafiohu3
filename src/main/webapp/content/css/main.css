@@ -99,9 +99,9 @@ Main page styles
 
 .hipster {
     display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
+    width: 277px;
+    height: 261px;
+    background: url("../images/hotel-urbano-original.png") no-repeat center top;
     background-size: contain;
 }
 
@@ -396,4 +396,97 @@ ui bootstrap tweaks
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+.destak{
+    line-height: 30px;
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+}
+
+.no-destake{
+	font-size: small;
+}
+
+.gray{
+	color: #808080;
+}
+
+.buy-btn{
+    background:url(../images/buyBtn.png) no-repeat;
+    cursor:pointer;
+    width: 144px;
+    height: 34px;
+    border: none;
+}
+
+.buy-btn:active {
+     background:url(../images/buyBtn2.png) no-repeat;
+     border:3px inset #cccccc;
+}
+
+.regions ul {
+	padding-left: 0px;
+}
+
+.regions li {
+	list-style: none;
+	margin-bottom:2px;
+}
+
+.offer{
+	text-align: center;
+}
+
+.offer .spanBox{
+    width: 150px;
+    display: block;
+    float: right;
+    text-align: left;
+}
+
+.offer .daily{
+	background:url(../images/daily.png) no-repeat;
+    background-position: 100% 0;
+	width: 40px;
+	height: 20px;
+	display:block;
+	padding-right: 20px;
+}
+
+.offer .person{
+	background:url(../images/person.png) no-repeat;
+	background-position: 100% 0;
+	width: 25px; 
+	height: 30px;
+	display:block;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+.offer .price{
+	font-family: sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.offers-shelf{
+	margin-bottom: 0;
+    width: 100%;
+    float: left;
+}
+
+.offers-ul{
+	list-style: none;
+    overflow: hidden;
+    width: 100%;
+}
+
+.offers-li{
+    border: 1px solid #000;
+    float: left;
+    height: 180px;
+    margin: 0 10px 10px 0;
+    width: 198px;
+    padding: 2px 2px 2px 2px; 
 }

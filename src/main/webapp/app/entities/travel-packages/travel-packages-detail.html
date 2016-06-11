@@ -12,55 +12,61 @@
 		<table class="jh-table table table-striped">
 	      <thead>
 	          <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-	              <th><span>ESCOLHA SUA MELHOR OPÇÃO</span> </th>
-	              <th> 
-	              	<label for="field_location">Saídas</label>
-		            <select ng-model="filter.region">
-		            	<option value="">--Selecione--</option>
-				        <option ng-repeat="region in (regionsFrom | unique)" ng-value="region">{{region}}</option>
-				     </select>
-	              </th>
-	              <th>
-	               
-	              	<label for="field_location">Diárias</label>
-		            <select ng-model="filter.daily" ng-init="'Selecione'">
-		            	<option value="">--Selecione--</option>
-				        <option ng-repeat="option in (optionsDaily | unique)" ng-value="option">{{option}}</option>
-				     </select>
-				  
-	              </th>
+	              <th colspan="3"><span>ESCOLHA SUA MELHOR OPÇÃO</span> </th>
 	              <th></th>
+	              <th></th>
+	              <th class="text-right">
+					<label for="fieldRegion">SAÍDAS</label>
+		            <select ng-model="filter.region" name="fieldRegion">
+		            	<option value="">--Escolha--</option>
+				        <option ng-repeat="region in (regionsFrom | unique)" ng-value="region">{{region}}</option>
+				    </select>				  
+	              </th>
+	              <th class="text-right">
+	              	<label for="fieldDaily">Nº DE DIÁRIAS</label>
+		            <select ng-model="filter.daily" name="fieldDaily">
+		            	<option value="">--Escolha--</option>
+				        <option ng-repeat="option in (optionsDaily | unique)" ng-value="option">{{option}}</option>
+				    </select>
+	              </th>
 	          </tr>
 	      </thead>
 	      <tbody>
 			<tr ng-repeat="travelOptions in (vm.travelPackages.options | filter: {froms: {nameRegion: filter.region}, daily: filter.daily})">
-              <!--  <td><a ui-sref="travel-options-detail({id:travelOptions.id})">{{travelOptions.id}}</a></td> | filterBy: ['daily'] : optionFilter -->
-              <!--  travelOptions in (vm.travelPackages.options | filterBy: ['froms.nameRegion', 'daily'] : optionFilter)  -->
-              <!--  track by option.daily |filter: optionFilter -->
-              <td>
+              <td colspan="3">
               	<span><h4>{{travelOptions.titleTravelOption}}</h4></span>
-              	<span>{{travelOptions.descriptionTravelOption}}</span>
+              	<span class="gray">{{travelOptions.descriptionTravelOption}}</span>
+              </td>
+              <td></td>
+              <td>
+              	<span class="regions">saidas:
+	              	<ul>
+	              		<li class="gray" ng-repeat="regions in travelOptions.froms track by regions.id">{{regions.nameRegion}}</li>
+	              	</ul>
+              	 </span>
               </td>
               <td>
-              	<span>saidas: </span>
-              	<ul>
-              		<li ng-repeat="regions in travelOptions.froms track by regions.id">{{regions.nameRegion}}</li>
-              	</ul>
+              	<div class="offer">
+             		<span class="spanBox">
+	              		<span class="daily">{{travelOptions.daily}}</span> Diarias
+	              	</span>
+	              	<br>
+	              	<span class="spanBox">
+	              		<span class="person"> 1 </span> Pessoa
+	              	</span>
+              	</div>
               </td>
-              <td>
-              	<span>{{travelOptions.daily}} diarias</span>
-              	<span>1 pessoa</span>
-              </td>
-              <td>R$ {{travelOptions.price}}</td>
-              <td class="text-right">
-                  <div class="btn-group flex-btn-group-container">
-                      <button type="submit"
-                              ui-sref="travel-options-detail({id:travelOptions.id})"
-                              class="btn btn-info btn-sm">
-                          <span class="glyphicon glyphicon-eye-open"></span>
-                          <span class="hidden-xs hidden-sm"></span>
-                      </button>
-                  </div>
+              <td class="text-center">
+              	<div class="offer">
+              		Por apenas: <br/>
+              		<span class="price">{{travelOptions.price | currency}}</span> <br/>
+              		+ taxas em 10x <br/>
+                    <span>
+                    	<button class="buy-btn" type="submit"
+                            ui-sref="travel-options-detail({id:travelOptions.id})">
+                    	</button>
+                    </span>
+              	</div>
               </td>
 	       </tr>
 	      </tbody>

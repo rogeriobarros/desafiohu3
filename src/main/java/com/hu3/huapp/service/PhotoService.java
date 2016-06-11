@@ -25,6 +25,13 @@ public interface PhotoService {
      *  @return the list of entities
      */
     List<PhotoDTO> findAll();
+    
+    /**
+     *  Get all the photos.
+     *  
+     *  @return the list of entities
+     */
+    List<PhotoDTO> findAllTravelPackageId(Long travelPackageId);
 
     /**
      *  Get the "id" photo.

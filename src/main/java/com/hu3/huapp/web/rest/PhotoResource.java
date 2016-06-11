@@ -95,9 +95,14 @@ public class PhotoResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public List<PhotoDTO> getAllPhotos() {
+    public List<PhotoDTO> getAllPhotos(@RequestParam(value = "travelPackageId", required = false) String travelPackageId) {
         log.debug("REST request to get all Photos");
-        return photoService.findAll();
+        if(travelPackageId != null){
+        	return photoService.findAllTravelPackageId( parseLong(travelPackageId) );
+        }else{
+        	return photoService.findAll();
+        }
+        
     }
 
     /**
@@ -134,6 +139,15 @@ public class PhotoResource {
         log.debug("REST request to delete Photo : {}", id);
         photoService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("photo", id.toString())).build();
+    }
+    
+    private Long parseLong(String value){
+    	try {
+			return Long.valueOf(value);
+		} catch (Exception e) {
+			log.error("Falha ao manipular parametro.");
+		}
+		return 0L;
     }
 
 }
