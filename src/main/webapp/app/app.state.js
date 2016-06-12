@@ -17,13 +17,13 @@
                     controllerAs: 'vm'
                 }
             },
-            resolve: {
-                authorize: ['Auth',
-                    function (Auth) {
-                        return Auth.authorize();
-                    }
-                ]
-            }
+//            resolve: {
+//                authorize: ['Auth',
+//                    function (Auth) {
+//                        return Auth.authorize();
+//                    }
+//                ]
+//            }
         });
     }
 })();

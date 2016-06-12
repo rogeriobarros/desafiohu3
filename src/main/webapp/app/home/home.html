@@ -1,76 +1,28 @@
 <div ng-cloak>
-    <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1>Bem vindo as ofertas Hotel Urbano!</h1>
-            <p class="lead">Estas são as ofertas de hoje.</p>
+	<div class="row">
+		<div class="col-md-4">
+			<span class="hipster img-responsive img-rounded"></span>
+		</div>
+		<div class="col-md-8">
+			<h1>Bem vindo as ofertas Hotel Urbano!</h1>
+			<p class="lead">Estas são as ofertas de hoje.</p>
 
-<!--  
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{vm.account.login}}".
-                </div>
+			<div class="offers-shelf">
+				<ul class="offers-ul">
+					<li class="offers-li"
+						ng-repeat="travelPackages in vm.travelPackages track by travelPackages.id">
+						<a ui-sref="travel-packages-detail({id:travelPackages.id})"> 
+							<img alt="photo" src="content/{{travelPackages.photos[0].path}}"
+								height="50" width="192">
+							<div class="destak">
+								{{travelPackages.titleTravelPackage}} <br> 
+								<span class="no-destake gray">{{travelPackages.descriptionTravelPackage}}</span>
+							</div>
+					</a>
+					</li>
+				</ul>
+			</div>
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
-                </div>
-            </div>
--->
-            <div class="offers-shelf">
-	           	<ul class="offers-ul">
-	           		<li class="offers-li" ng-repeat="travelPackages in vm.travelPackages track by travelPackages.id">
-	           			<a ui-sref="travel-packages-detail({id:travelPackages.id})">
-	                   		<img alt="photo" src="content/{{travelPackages.photos[0].path}}" height="50" width="192">
-	                   	</a>
-	                   	<div class="destak">
-	                   		{{travelPackages.titleTravelPackage}}
-	                   		<br>
-	                   		<span class="no-destake gray">{{travelPackages.descriptionTravelPackage}}</span>
-	                   	</div>
-	                   </li>
-	           	</ul>
-            </div>
-
-			<!-- 
-		    <div class="table-responsive">
-		        <table class="jh-table table table-striped">
-		            <thead>
-		                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-		                    <th></th>
-		                </tr>
-		            </thead>
-		            <tbody>
-
-		            	 
-		                <tr ng-repeat="travelPackages in vm.travelPackages track by travelPackages.id">
-		                    <td>
-		                    	<a ui-sref="travel-packages-detail({id:travelPackages.id})">
-		                    		<img alt="photo" src="content/{{travelPackages.photos[0].path}}" height="50" width="350">
-		                    	</a>
-		                    	<div class="destak">
-		                    		{{travelPackages.titleTravelPackage}}
-		                    		<br>
-		                    		<span class="no-destake gray">{{travelPackages.descriptionTravelPackage}}</span>
-		                    	</div>
-		                    </td>
-		                </tr>
-		                
-		            </tbody>
-		        </table>
-		       -->
-		    </div>
-		    <!--  
-		    <div class="text-center">
-		        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
-		        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-		    </div>
-		    -->
-        </div>
-    </div>
+		</div>
+	</div>
 </div>

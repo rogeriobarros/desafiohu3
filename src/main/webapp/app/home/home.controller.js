@@ -12,6 +12,7 @@
         
         vm.travelPackages = [];
 
+        /*
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -31,7 +32,7 @@
         function register () {
             $state.go('register');
         }
-        
+        */
         loadAll();
 
         function loadAll() {
