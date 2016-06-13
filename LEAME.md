@@ -14,3 +14,5 @@ Passo a passo
 5 - Executar os testes back end e front end
 	gradle test
 	gulp test
+6 - Executar em modo stand-alone
+	java -jar <pasta-base>/desafiohu3/stand-alone/desafiohu-3-0.0.1-SNAPSHOT.war --spring.profiles.active=dev
