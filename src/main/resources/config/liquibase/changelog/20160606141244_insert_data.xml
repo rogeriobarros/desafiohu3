@@ -13,43 +13,8 @@
           separator=";"
           tableName="location">
         </loadData>
-	    <!--
-	        Added the entity TravelPackages.
-	    -->
-	    <loadData encoding="UTF-8"
-          file="config/liquibase/travel_packages.csv"
-          separator=";"
-          tableName="travel_packages">
-        </loadData>
-        <!--
-	        Added the entity Photos.
-	    -->
-	    <loadData encoding="UTF-8"
-          file="config/liquibase/photos.csv"
-          separator=";"
-          tableName="photo">
-        </loadData>
-        <!--
-	        Added the entity TravelOptions.
-	    -->
-	    <loadData encoding="UTF-8"
-          file="config/liquibase/travel_options.csv"
-          separator=";"
-          tableName="travel_options">
-        </loadData>
-        <!--
-	        Added the entity RegionOfOrigin.
-	    -->
-	    <!-- Arquivo com a base completa -->
-	    <!--  file="config/liquibase/region_of_origin_full.csv" -->
-	    <loadData encoding="UTF-8"
-          file="config/liquibase/region_of_origin.csv"
-          separator=";"
-          tableName="region_of_origin">
-        </loadData>
-            
-          <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
-
+        
+    	<!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         
     </changeSet>
 </databaseChangeLog>

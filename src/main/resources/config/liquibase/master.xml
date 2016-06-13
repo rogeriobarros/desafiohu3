@@ -15,5 +15,9 @@
     <include file="classpath:config/liquibase/changelog/20160606140916_added_entity_constraints_TravelPackages.xml" relativeToChangelogFile="false"/>
     <!--Boot-strap do dados  -->
     <include file="classpath:config/liquibase/changelog/20160606141244_insert_data.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141244_insert_data2.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141244_insert_data3.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141244_insert_data4.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606141244_insert_data5.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
