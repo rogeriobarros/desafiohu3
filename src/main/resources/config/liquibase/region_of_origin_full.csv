@@ -1,0 +1,185 @@
+﻿ID;NAME_REGION;ID_TRAVEL_OPTIONS
+1;Manaus;1
+2;Belém;1
+3;Rio de Janeiro;2
+4;Brasilia;3
+5;Campo Grande;3
+6;Manaus;4
+7;Rio de Janeiro;5
+8;São Paulo;5
+9;Brasilia;6
+10;Manaus;7
+11;Salvador;7
+12;Ilhéus;7
+13;Boa Vista;7
+14;Cuiabá;7
+15;Rio de Janeiro;8
+16;Brasilia;9
+17;Salvador;9
+18;Campo Grande;9
+19;Brasilia;10
+20;Campo Grande;10
+21;Manaus;11
+22;Belém;11
+23;Rio de Janeiro;12
+24;Manaus;13
+25;Rio de Janeiro;14
+26;Rio de Janeiro;15
+27;São Paulo;15
+28;Brasilia;16
+29;Manaus;17
+30;Salvador;17
+31;Ilhéus;17
+32;Boa Vista;17
+33;Cuiabá;17
+32;Brasilia;18
+33;Campo Grande;18
+34;Manaus;19
+35;Belém;19
+36;Rio de Janeiro;20
+37;Manaus;21
+38;Rio de Janeiro;22
+39;Brasilia;23
+40;Salvador;23
+41;Campo Grande;23
+42;Rio de Janeiro;24
+43;São Paulo;24
+44;Manaus;25
+45;Salvador;25
+46;Ilhéus;25
+47;Boa Vista;25
+48;Cuiabá;25
+49;Brasilia;26
+50;Campo Grande;26
+51;Manaus;27
+52;Belém;27
+53;Rio de Janeiro;28
+54;Manaus;29
+55;Rio de Janeiro;30
+56;Brasilia;31
+57;Salvador;31
+58;Campo Grande;31
+59;Rio de Janeiro;32
+60;São Paulo;32
+61;Brasilia;33
+62;Manaus;34
+63;Salvador;34
+64;Ilhéus;34
+65;Boa Vista;34
+66;Cuiabá;34
+67;Manaus;35
+68;Belém;35
+69;Rio de Janeiro;36
+70;Rio de Janeiro;37
+71;Brasilia;38
+72;Salvador;38
+73;Campo Grande;38
+74;Rio de Janeiro;39
+75;São Paulo;39
+76;Brasilia;40
+77;Manaus;41
+78;Salvador;41
+79;Ilhéus;41
+80;Boa Vista;41
+81;Cuiabá;41
+82;Brasilia;42
+83;Campo Grande;42
+84;Manaus;43
+85;Belém;43
+86;Rio de Janeiro;44
+87;Manaus;45
+88;Rio de Janeiro;46
+89;Brasilia;47
+90;Salvador;47
+91;Campo Grande;47
+92;Rio de Janeiro;48
+93;São Paulo;48
+94;Brasilia;49
+95;Manaus;50
+96;Salvador;50
+97;Ilhéus;50
+98;Boa Vista;50
+99;Cuiabá;50
+100;Brasilia;51
+101;Campo Grande;51
+102;Manaus;52
+103;Belém;52
+104;Rio de Janeiro;53
+105;Rio de Janeiro;54
+106;Brasilia;55
+107;Salvador;55
+108;Campo Grande;55
+109;Rio de Janeiro;56
+110;São Paulo;56
+111;Brasilia;57
+112;Brasilia;58
+113;Campo Grande;58
+114;Manaus;59
+115;Belém;59
+116;Rio de Janeiro;60
+117;Manaus;61
+118;Rio de Janeiro;62
+119;Brasilia;63
+120;Salvador;63
+121;Campo Grande;63
+122;Rio de Janeiro;64
+123;São Paulo;64
+124;Brasilia;65
+125;Manaus;66
+126;Salvador;66
+127;Ilhéus;66
+128;Boa Vista;66
+129;Cuiabá;66
+130;Brasilia;67
+131;Campo Grande;67
+132;Manaus;68
+133;Belém;68
+134;Manaus;69
+135;Rio de Janeiro;70
+136;Brasilia;71
+137;Salvador;71
+138;Campo Grande;71
+139;Rio de Janeiro;72
+140;São Paulo;72
+141;Brasilia;73
+142;Manaus;74
+143;Salvador;74
+144;Ilhéus;74
+145;Boa Vista;74
+146;Cuiabá;74
+147;Brasilia;75
+148;Campo Grande;75
+149;Manaus;76
+150;Belém;76
+151;Manaus;77
+152;Rio de Janeiro;78
+153;Brasilia;79
+154;Salvador;79
+155;Campo Grande;79
+156;Brasilia;80
+157;Campo Grande;80
+158;Manaus;81
+159;Belém;81
+160;Manaus;82
+161;Rio de Janeiro;83
+162;Brasilia;84
+163;Salvador;84
+164;Campo Grande;84
+165;Brasilia;85
+166;Campo Grande;85
+167;Manaus;86
+168;Belém;86
+169;Manaus;87
+170;Rio de Janeiro;88
+171;Brasilia;89
+172;Salvador;89
+173;Campo Grande;89
+174;Brasilia;90
+175;Campo Grande;90
+176;Manaus;91
+177;Belém;91
+178;Manaus;92
+179;Rio de Janeiro;93
+180;Brasilia;94
+181;Salvador;94
+182;Campo Grande;94

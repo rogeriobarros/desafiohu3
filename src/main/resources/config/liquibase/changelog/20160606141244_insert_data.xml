@@ -40,6 +40,8 @@
         <!--
 	        Added the entity RegionOfOrigin.
 	    -->
+	    <!-- Arquivo com a base completa -->
+	    <!--  file="config/liquibase/region_of_origin_full.csv" -->
 	    <loadData encoding="UTF-8"
           file="config/liquibase/region_of_origin.csv"
           separator=";"
