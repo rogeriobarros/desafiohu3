@@ -29,6 +29,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'war'
 apply plugin: 'propdeps'
 apply plugin: "com.moowork.gulp"
+apply plugin: 'jacoco'
+
 defaultTasks 'bootRun'
 
 bootRepackage {
@@ -56,14 +58,17 @@ test {
     reports.html.enabled = false
 }
 
-
-
 task testReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/tests")
     reportOn test
 }
 
-
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+    }
+}
+check.dependsOn jacocoTestReport
 
 apply from: 'gradle/yeoman.gradle'
 apply from: 'gradle/sonar.gradle'
