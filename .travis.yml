@@ -5,6 +5,7 @@ node_js:
   - "6.2.1"
 
 before_install: 
+- if [[ `npm -v` != 2* ]]; then npm i -g npm@3.9.5; fi
 - npm install -g gulp
 - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
 - sudo java -jar jpm4j.jar -g init
