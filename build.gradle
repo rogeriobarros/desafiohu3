@@ -89,7 +89,7 @@ if (project.hasProperty('prod')) {
 group = 'com.hu3.huapp'
 version = '0.0.1-SNAPSHOT'
 
-description = ''
+description = 'Desafio Hotel Urbano'
 
 configurations {
     providedRuntime
