@@ -1,10 +1,17 @@
 sudo: required
 
+env:
+  global:
+    - CXX=g++-4.8
+
 language: node_js
 node_js:
   - "6.2.1"
 
 before_install: 
+- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+- sudo apt-get -qq update
+- sudo apt-get -qq install g++-4.8
 - if [[ `npm -v` != 2* ]]; then npm i -g npm@3.9.5; fi
 - npm install -g gulp
 - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
@@ -26,6 +33,7 @@ after_success:
 - codacy-coverage-reporter -l Java -r build/reports/jacoco/test/jacocoTestReport.xml  --prefix src/main/java/
 
 notifications:
+  slack: mycompany:QW93JOP898JEIQWJDSXW13IOK
   webhooks:
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
